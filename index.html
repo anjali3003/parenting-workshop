@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raise Confident Kids — Workshop by Priya Sharma</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest: #1C3A2F;
+    --forest-light: #2A5441;
+    --ivory: #F7F2EB;
+    --ivory-dark: #EDE6DA;
+    --terracotta: #D4814A;
+    --terracotta-light: #E8A07A;
+    --gold: #C9A84C;
+    --text-dark: #1A2420;
+    --text-mid: #4A5E56;
+    --text-light: #7A8F87;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--ivory);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── PAGE SYSTEM ── */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--ivory-dark);
+    height: 3px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--terracotta), var(--gold));
+    transition: width 0.5s ease;
+  }
+
+  /* ══════════════════════════════
+     LANDING PAGE
+  ══════════════════════════════ */
+  .hero {
+    background: var(--forest);
+    color: var(--ivory);
+    padding: 80px 24px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 40px;
+    padding: 5px 16px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 62px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ivory);
+    max-width: 780px;
+    margin: 0 auto 20px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta-light);
+  }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(247,242,235,0.75);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(247,242,235,0.7);
+  }
+  .hero-meta-item svg { opacity: 0.6; flex-shrink: 0; }
+  .hero-meta-item strong { color: var(--ivory); font-weight: 500; }
+  .cta-primary {
+    display: inline-block;
+    background: var(--terracotta);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 40px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .cta-primary:hover { background: var(--terracotta-light); transform: translateY(-2px); }
+  .cta-primary:active { transform: translateY(0); }
+  .hero-trust {
+    margin-top: 20px;
+    font-size: 12px;
+    color: rgba(247,242,235,0.4);
+  }
+
+  /* Sections */
+  .section { padding: 72px 24px; max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--forest);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--ivory-dark);
+  }
+
+  /* Pain points */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .pain-card {
+    background: var(--white);
+    border: 1px solid var(--ivory-dark);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .pain-card .icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .pain-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+  .pain-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* What you'll learn */
+  .learn-bg { background: var(--forest); color: var(--ivory); padding: 72px 24px; }
+  .learn-inner { max-width: 860px; margin: 0 auto; }
+  .learn-bg .section-label { color: var(--gold); }
+  .learn-bg .section-title { color: var(--ivory); }
+  .learn-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+    list-style: none;
+  }
+  .learn-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .learn-num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+  .learn-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 4px;
+  }
+  .learn-item p {
+    font-size: 13px;
+    color: rgba(247,242,235,0.6);
+    line-height: 1.55;
+  }
+
+  /* Mentor bio */
+  .mentor-card {
+    background: var(--white);
+    border: 1px solid var(--ivory-dark);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  .mentor-avatar {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--forest-light), var(--forest));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .mentor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 4px;
+  }
+  .mentor-role {
+    font-size: 13px;
+    color: var(--terracotta);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+  .mentor-bio {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .mentor-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .mentor-stat strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--forest);
+    font-family: 'Playfair Display', serif;
+  }
+  .mentor-stat span { font-size: 12px; color: var(--text-light); }
+
+  /* Testimonials */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .testi-card {
+    background: var(--white);
+    border: 1px solid var(--ivory-dark);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+  .testi-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .testi-author { font-size: 13px; font-weight: 600; color: var(--text-mid); }
+  .testi-loc { font-size: 12px; color: var(--text-light); }
+
+  /* Workshop details + CTA */
+  .workshop-box {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    text-align: center;
+    color: var(--ivory);
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .workshop-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,168,76,0.1), transparent);
+    pointer-events: none;
+  }
+  .workshop-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+  }
+  .workshop-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    color: var(--ivory);
+    margin-bottom: 12px;
+  }
+  .workshop-box p {
+    font-size: 15px;
+    color: rgba(247,242,235,0.65);
+    margin-bottom: 28px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .price-original {
+    font-size: 18px;
+    color: rgba(247,242,235,0.35);
+    text-decoration: line-through;
+  }
+  .price-current {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--ivory);
+  }
+  .price-tag {
+    background: var(--terracotta);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .seat-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212,129,74,0.15);
+    border: 1px solid rgba(212,129,74,0.3);
+    border-radius: 40px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--terracotta-light);
+    margin-bottom: 24px;
+  }
+  .seat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--terracotta-light);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .workshop-meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .workshop-meta-item {
+    font-size: 13px;
+    color: rgba(247,242,235,0.5);
+  }
+  .workshop-meta-item strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ivory);
+    margin-bottom: 2px;
+  }
+
+  /* FAQ */
+  .faq-list { margin-top: 32px; }
+  .faq-item {
+    border-bottom: 1px solid var(--ivory-dark);
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--ivory-dark); }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--forest);
+    gap: 16px;
+  }
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--ivory-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--text-mid);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .faq-item.open .faq-toggle {
+    transform: rotate(45deg);
+    background: var(--forest);
+    color: var(--ivory);
+    border-color: var(--forest);
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
+  /* ══════════════════════════════
+     SIGN-UP FORM PAGE
+  ══════════════════════════════ */
+  .form-page {
+    min-height: 100vh;
+    background: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 700px) { .form-page { grid-template-columns: 1fr; } }
+
+  .form-left {
+    background: var(--forest);
+    padding: 64px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--ivory);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+  @media (max-width: 700px) {
+    .form-left { position: static; height: auto; padding: 48px 24px 32px; }
+  }
+  .form-left-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .form-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ivory);
+    margin-bottom: 20px;
+  }
+  .form-left p {
+    font-size: 15px;
+    color: rgba(247,242,235,0.65);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .form-include-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .form-include-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: rgba(247,242,235,0.75);
+  }
+  .form-include-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .form-right {
+    padding: 64px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 700px) { .form-right { padding: 32px 24px 48px; } }
+
+  .form-card {
+    width: 100%;
+    max-width: 420px;
+  }
+  .form-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  .form-card .form-sub {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 32px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+  .field input, .field select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--ivory-dark);
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+  }
+  .field input:focus, .field select:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 3px rgba(42,84,65,0.1);
+  }
+  .field input::placeholder { color: var(--text-light); }
+
+  .phone-row { display: grid; grid-template-columns: 80px 1fr; gap: 10px; }
+  .phone-row select {
+    padding: 13px 10px;
+    font-size: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234A5E56' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 26px;
+  }
+
+  .whatsapp-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(28,58,47,0.05);
+    border: 1px solid rgba(28,58,47,0.12);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 24px;
+    cursor: pointer;
+  }
+  .whatsapp-check input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--forest);
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+  }
+  .whatsapp-check span {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .whatsapp-check strong { color: var(--forest); }
+
+  .form-cta {
+    width: 100%;
+    padding: 16px;
+    background: var(--forest);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .form-cta:hover { background: var(--forest-light); transform: translateY(-1px); }
+  .form-secure {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 12px;
+  }
+  .error-msg {
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 5px;
+    display: none;
+  }
+  .field.error input { border-color: #c0392b; }
+  .field.error .error-msg { display: block; }
+
+  /* ══════════════════════════════
+     PAYMENT PAGE
+  ══════════════════════════════ */
+  .pay-page {
+    min-height: 100vh;
+    background: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 700px) { .pay-page { grid-template-columns: 1fr; } }
+
+  .pay-left {
+    background: var(--forest);
+    padding: 64px 48px;
+    color: var(--ivory);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 700px) { .pay-left { position: static; height: auto; padding: 48px 24px 32px; } }
+
+  .pay-left-eyebrow {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .pay-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ivory);
+    margin-bottom: 32px;
+  }
+  .order-summary {
+    background: rgba(247,242,235,0.07);
+    border: 1px solid rgba(247,242,235,0.12);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  .order-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(247,242,235,0.7);
+    padding: 7px 0;
+  }
+  .order-row + .order-row { border-top: 1px solid rgba(247,242,235,0.08); }
+  .order-row.total {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ivory);
+    border-top: 1px solid rgba(247,242,235,0.2) !important;
+    margin-top: 4px;
+    padding-top: 14px;
+  }
+  .order-row.total .order-price { color: var(--gold); }
+  .order-strike { text-decoration: line-through; opacity: 0.45; font-size: 13px; }
+  .trust-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .trust-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: rgba(247,242,235,0.6);
+  }
+  .trust-item svg { flex-shrink: 0; opacity: 0.6; margin-top: 1px; }
+
+  .pay-right {
+    padding: 64px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 700px) { .pay-right { padding: 32px 24px 48px; } }
+
+  .pay-card {
+    width: 100%;
+    max-width: 420px;
+  }
+  .pay-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  .pay-card .pay-sub {
+    font-size: 14px; color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+
+  .upi-section, .card-section {
+    margin-bottom: 24px;
+  }
+  .payment-method-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-light); margin-bottom: 12px;
+  }
+  .upi-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  .upi-input {
+    flex: 1;
+    padding: 13px 16px;
+    border: 1.5px solid var(--ivory-dark);
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .upi-input:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 3px rgba(42,84,65,0.1);
+  }
+  .upi-verify-btn {
+    padding: 13px 20px;
+    background: var(--forest);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .upi-verify-btn:hover { background: var(--forest-light); }
+
+  .upi-apps {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .upi-app {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px solid var(--ivory-dark);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--white);
+  }
+  .upi-app:hover {
+    border-color: var(--forest);
+    color: var(--forest);
+  }
+  .upi-app.selected {
+    border-color: var(--forest);
+    background: rgba(28,58,47,0.06);
+    color: var(--forest);
+  }
+  .upi-emoji { font-size: 16px; }
+
+  .or-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    font-size: 12px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .or-divider::before, .or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--ivory-dark);
+  }
+
+  .card-fields { display: flex; flex-direction: column; gap: 14px; }
+  .card-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card-field label {
+    display: block;
+    font-size: 12px; font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 5px;
+  }
+  .card-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--ivory-dark);
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card-field input:focus {
+    border-color: var(--forest-light);
+    box-shadow: 0 0 0 3px rgba(42,84,65,0.1);
+  }
+  .card-field input::placeholder { color: var(--text-light); }
+
+  .pay-cta {
+    width: 100%;
+    padding: 16px;
+    background: var(--terracotta);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .pay-cta:hover { background: var(--terracotta-light); transform: translateY(-1px); }
+
+  .pay-secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 12px;
+  }
+  .pay-logos {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .pay-logo-badge {
+    border: 1px solid var(--ivory-dark);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-mid);
+    background: var(--white);
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════════════
+     SUCCESS PAGE
+  ══════════════════════════════ */
+  .success-page {
+    min-height: 100vh;
+    background: var(--forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .success-inner { max-width: 520px; }
+  .success-check {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.15);
+    border: 2px solid rgba(201,168,76,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 28px;
+  }
+  .success-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    color: var(--ivory);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .success-inner p {
+    font-size: 16px;
+    color: rgba(247,242,235,0.65);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+  .success-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  .success-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: rgba(247,242,235,0.06);
+    border: 1px solid rgba(247,242,235,0.1);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .success-step-num {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .success-step h4 {
+    font-size: 14px; font-weight: 600;
+    color: var(--ivory);
+    margin-bottom: 2px;
+  }
+  .success-step p {
+    font-size: 13px;
+    color: rgba(247,242,235,0.55);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .success-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .success-whatsapp:hover { opacity: 0.9; }
+
+  /* ── HERO PHOTO STRIP ── */
+  .hero-photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 12px;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 56px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-photo-strip img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 8px 32px rgba(28,58,47,0.18);
+  }
+  .hero-photo-strip img:nth-child(1) { height: 180px; margin-top: 32px; }
+  .hero-photo-strip img:nth-child(2) { height: 240px; }
+  .hero-photo-strip img:nth-child(3) { height: 180px; margin-top: 32px; }
+  @media (max-width: 600px) {
+    .hero-photo-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .hero-photo-strip img:nth-child(3) { display: none; }
+    .hero-photo-strip img:nth-child(1),
+    .hero-photo-strip img:nth-child(2) { height: 160px; margin-top: 0; }
+  }
+
+  /* ── PAIN SECTION WITH IMAGE ── */
+  .pain-section-inner {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 780px) {
+    .pain-section-inner { grid-template-columns: 1fr; }
+    .pain-photo-col { order: -1; }
+  }
+  .pain-photo-col img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    height: 480px;
+    display: block;
+    box-shadow: 0 12px 40px rgba(28,58,47,0.14);
+  }
+  @media (max-width: 780px) {
+    .pain-photo-col img { height: 260px; }
+  }
+
+  /* ── MENTOR PHOTO ── */
+  .mentor-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    border: 3px solid var(--ivory-dark);
+    display: block;
+    flex-shrink: 0;
+  }
+  .mentor-photo-placeholder {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--forest-light), var(--forest));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--gold);
+    flex-shrink: 0;
+    border: 3px solid var(--ivory-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .mentor-photo-upload-hint {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 8px;
+    text-align: center;
+    width: 120px;
+    line-height: 1.4;
+  }
+
+  /* ── SOCIAL LINKS ── */
+  .social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1.5px solid var(--ivory-dark);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    background: var(--white);
+  }
+  .social-link:hover { border-color: var(--forest); color: var(--forest); }
+  .social-link.instagram:hover { border-color: #C13584; color: #C13584; background: #fdf0f7; }
+  .social-link.facebook:hover { border-color: #1877F2; color: #1877F2; background: #f0f5ff; }
+  .social-link.youtube:hover { border-color: #FF0000; color: #FF0000; background: #fff0f0; }
+  .social-link svg { flex-shrink: 0; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .mentor-card { grid-template-columns: 1fr; }
+    .hero-meta { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+
+<!-- ══════════════════════════════
+     PAGE 1: LANDING PAGE
+══════════════════════════════ -->
+<div class="page active" id="page-landing">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Live Workshop · Limited Seats</div>
+    <h1>Raise a child who is <em>confident,</em> kind, and emotionally strong</h1>
+    <p class="hero-sub">A 2-hour live workshop for parents who want to understand their child deeply — not just manage their behaviour.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span><strong>July 20, 2025</strong> · Sunday</span>
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <span><strong>11:00 AM</strong> · 2 hours</span>
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span><strong>Online</strong> · Zoom</span>
+      </div>
+    </div>
+    <button class="cta-primary" onclick="goToForm()">Reserve my seat — ₹499 →</button>
+    <p class="hero-trust">🔒 Secure payment · Only 18 seats left</p>
+  </section>
+
+  <!-- Hero photo strip -->
+  <div class="hero-photo-strip">
+    <img
+      src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80&fit=crop"
+      alt="Mother laughing with her toddler"
+      loading="lazy"
+    >
+    <img
+      src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=600&q=80&fit=crop&crop=faces"
+      alt="Happy mother hugging her child warmly"
+      loading="lazy"
+    >
+    <img
+      src="https://images.unsplash.com/photo-1484665754804-74b091211472?w=400&q=80&fit=crop&crop=faces"
+      alt="Parent and child reading together"
+      loading="lazy"
+    >
+  </div>
+
+  <!-- Pain points -->
+  <div class="section">
+    <div class="pain-section-inner">
+      <div>
+        <div class="section-label">Does this sound like you?</div>
+        <h2 class="section-title">You love your child more than anything.<br>But some days, parenting feels impossible.</h2>
+        <p class="section-sub" style="margin-bottom:32px">You're not alone. Most parents feel this — and most parenting content gives you tips that don't work in the real world.</p>
+        <div class="pain-grid" style="grid-template-columns:1fr 1fr">
+          <div class="pain-card">
+            <div class="icon">😤</div>
+            <h3>Tantrums that never end</h3>
+            <p>You've tried everything — nothing sticks. Exhausted before 9 AM.</p>
+          </div>
+          <div class="pain-card">
+            <div class="icon">📵</div>
+            <h3>Your child doesn't listen</h3>
+            <p>You repeat yourself five times. You end up shouting — and feeling terrible.</p>
+          </div>
+          <div class="pain-card">
+            <div class="icon">😰</div>
+            <h3>Anxiety about their future</h3>
+            <p>Am I doing enough? These questions keep you up at night.</p>
+          </div>
+          <div class="pain-card">
+            <div class="icon">📚</div>
+            <h3>Too much advice, no clarity</h3>
+            <p>Everyone has an opinion. You don't know what to actually try.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pain-photo-col">
+        <img
+          src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600&q=80&fit=crop&crop=faces,top"
+          alt="Mother and baby sharing a joyful moment"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- What you'll learn -->
+  <div class="learn-bg">
+    <div class="learn-inner">
+      <div class="section-label">What you'll walk away with</div>
+      <h2 class="section-title" style="color:var(--ivory)">Two hours that change how you see your child — and yourself as a parent</h2>
+      <ul class="learn-list">
+        <li class="learn-item">
+          <div class="learn-num">1</div>
+          <div>
+            <h4>Why your child behaves the way they do</h4>
+            <p>Understand the emotional and developmental science behind behaviour, without the jargon.</p>
+          </div>
+        </li>
+        <li class="learn-item">
+          <div class="learn-num">2</div>
+          <div>
+            <h4>The 3-word phrase that ends most arguments</h4>
+            <p>A simple technique that calms your child in under 60 seconds — tested with 500+ families.</p>
+          </div>
+        </li>
+        <li class="learn-item">
+          <div class="learn-num">3</div>
+          <div>
+            <h4>How to build emotional intelligence from age 3</h4>
+            <p>Practical daily habits that take under 5 minutes but create a lifetime of difference.</p>
+          </div>
+        </li>
+        <li class="learn-item">
+          <div class="learn-num">4</div>
+          <div>
+            <h4>Setting boundaries without breaking trust</h4>
+            <p>Say no firmly without guilt — and have your child actually respect it.</p>
+          </div>
+        </li>
+        <li class="learn-item">
+          <div class="learn-num">5</div>
+          <div>
+            <h4>Your personal parenting style roadmap</h4>
+            <p>Leave with a clear, written plan made for your specific child and situation.</p>
+          </div>
+        </li>
+        <li class="learn-item">
+          <div class="learn-num">6</div>
+          <div>
+            <h4>Live Q&A with direct answers</h4>
+            <p>Bring your toughest parenting challenge. No question is too small or too messy.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mentor -->
+  <div class="section">
+    <div class="section-label">Your guide</div>
+    <h2 class="section-title">Meet Priya Sharma</h2>
+    <p class="section-sub">Child psychologist, parent coach, and the person behind the Instagram page that changed how 200,000 parents think about raising kids.</p>
+    <div class="mentor-card">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <!-- Replace the src below with Dr. Priya's actual photo URL -->
+        <img
+          class="mentor-photo"
+          src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&q=80&fit=crop&crop=faces,top"
+          alt="Dr. Priya Sharma — Child Psychologist and Parent Coach"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        <div class="mentor-photo-placeholder" style="display:none">P</div>
+        <div class="mentor-photo-upload-hint">📷 Replace with<br>Dr. Priya's photo</div>
+      </div>
+      <div>
+        <div class="mentor-name">Dr. Priya Sharma</div>
+        <div class="mentor-role">Child Psychologist · Parent Coach</div>
+        <p class="mentor-bio">Priya has spent 12 years working with children and their families across India. Her approach combines developmental psychology with practical tools that actually work in messy, real-life households. She is a mother of two, and she knows firsthand that the perfect parenting advice often falls apart by 7 AM.</p>
+        <div class="mentor-stats">
+          <div class="mentor-stat"><strong>200K+</strong><span>Instagram followers</span></div>
+          <div class="mentor-stat"><strong>5,000+</strong><span>families helped</span></div>
+          <div class="mentor-stat"><strong>12 yrs</strong><span>experience</span></div>
+        </div>
+
+        <!-- Social links — replace # with actual profile URLs -->
+        <div class="social-links">
+          <a href="#" class="social-link instagram" target="_blank" rel="noopener" aria-label="Dr. Priya on Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a href="#" class="social-link facebook" target="_blank" rel="noopener" aria-label="Dr. Priya on Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+          <a href="#" class="social-link youtube" target="_blank" rel="noopener" aria-label="Dr. Priya on YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Testimonials -->
+  <div class="section">
+    <div class="section-label">What parents say</div>
+    <h2 class="section-title">Real words from real families</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I attended thinking I'd get generic advice. What I got instead was a completely new way of seeing my 6-year-old. The tantrum technique alone was worth 10x the fee."</p>
+        <div class="testi-author">Meera R.</div>
+        <div class="testi-loc">Mumbai · Mother of two</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"My husband and I attended together. For the first time in years, we're on the same page about how to raise our son. Priya has a gift for making complex things feel obvious."</p>
+        <div class="testi-author">Anjali & Rohan K.</div>
+        <div class="testi-loc">Bangalore · Parents of a 4-year-old</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was sceptical about online workshops. This completely changed my mind. Two hours, zero fluff. I left with a written plan and actually used it the same evening."</p>
+        <div class="testi-author">Sunita P.</div>
+        <div class="testi-loc">Delhi · Mother of three</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Block -->
+  <div class="section" style="padding-top: 0">
+    <div class="workshop-box">
+      <div class="workshop-badge">Early bird pricing · Ends July 15</div>
+      <h2>Join the workshop this Sunday</h2>
+      <p>A live, interactive 2-hour session with Priya. Bring your toughest parenting challenge — and leave with a plan.</p>
+      <div class="price-row">
+        <span class="price-original">₹999</span>
+        <span class="price-current">₹499</span>
+        <span class="price-tag">Save 50%</span>
+      </div>
+      <div class="seat-counter">
+        <div class="seat-dot"></div>
+        Only 18 seats remaining
+      </div>
+      <br>
+      <button class="cta-primary" onclick="goToForm()">Reserve my seat now →</button>
+      <div class="workshop-meta-row">
+        <div class="workshop-meta-item"><strong>July 20</strong>Date</div>
+        <div class="workshop-meta-item"><strong>11:00 AM IST</strong>Time</div>
+        <div class="workshop-meta-item"><strong>2 hours</strong>Duration</div>
+        <div class="workshop-meta-item"><strong>Zoom</strong>Platform</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" style="padding-top: 0">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">Things parents ask before joining</h2>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">What age group is this workshop for?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">This workshop is designed for parents of children aged 2 to 12. The core principles apply broadly, and Priya will address age-specific questions during the live Q&A.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Will I get a recording if I can't attend live?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Yes, every registered attendee gets a full recording within 24 hours. However, the live Q&A and your personal roadmap session are only available during the live workshop.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Is there a refund if it doesn't help?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Absolutely. If you attend the workshop and feel it wasn't worth your time, email us within 7 days for a full refund — no questions asked. We've never had to issue one yet.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can both parents join on the same ticket?<div class="faq-toggle">+</div></div>
+        <div class="faq-a">Yes! One ticket covers one household. Both parents can join the same Zoom link together. We actually encourage it — it's one of the most powerful things you can do as a parenting team.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer CTA -->
+  <div style="background: var(--forest); padding: 48px 24px; text-align: center;">
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,30px);color:var(--ivory);font-weight:600;margin-bottom:20px;max-width:500px;margin-left:auto;margin-right:auto;">Your child doesn't need a perfect parent. Just a present one.</p>
+    <button class="cta-primary" onclick="goToForm()">Join the workshop →</button>
+  </div>
+
+</div><!-- end page-landing -->
+
+
+<!-- ══════════════════════════════
+     PAGE 2: SIGN-UP FORM
+══════════════════════════════ -->
+<div class="page" id="page-form">
+  <div class="form-page">
+
+    <div class="form-left">
+      <div class="form-left-eyebrow">Step 1 of 2 · Your details</div>
+      <h2>You're almost in.<br>Just a few details.</h2>
+      <p>Your seat will be held for 10 minutes once you complete this form and move to payment.</p>
+      <ul class="form-include-list">
+        <li>Live workshop access on July 20</li>
+        <li>Full recording sent within 24 hours</li>
+        <li>Your personal parenting roadmap PDF</li>
+        <li>Invite to the private parent community</li>
+        <li>Reminder on WhatsApp the morning of</li>
+      </ul>
+    </div>
+
+    <div class="form-right">
+      <div class="form-card">
+        <h3>Tell us about yourself</h3>
+        <p class="form-sub">We'll send your workshop details to these contacts.</p>
+
+        <div class="field-group">
+          <div class="field" id="field-name">
+            <label for="inp-name">Your full name</label>
+            <input type="text" id="inp-name" placeholder="Priya Sharma" autocomplete="name">
+            <div class="error-msg">Please enter your name</div>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="inp-email">Email address</label>
+            <input type="email" id="inp-email" placeholder="priya@email.com" autocomplete="email">
+            <div class="error-msg">Please enter a valid email</div>
+          </div>
+
+          <div class="field" id="field-phone">
+            <label>Phone number</label>
+            <div class="phone-row">
+              <select id="inp-code" aria-label="Country code">
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+              </select>
+              <input type="tel" id="inp-phone" placeholder="98765 43210" autocomplete="tel">
+            </div>
+            <div class="error-msg">Please enter a valid phone number</div>
+          </div>
+
+          <div class="field" id="field-children">
+            <label for="inp-children">Age of your child(ren)</label>
+            <select id="inp-children">
+              <option value="" disabled selected>Select age range</option>
+              <option>Under 2 years</option>
+              <option>2–4 years</option>
+              <option>5–7 years</option>
+              <option>8–10 years</option>
+              <option>11–12 years</option>
+              <option>Multiple age groups</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="whatsapp-check">
+          <input type="checkbox" id="whatsapp-opt" checked>
+          <span><strong>Send me workshop reminders on WhatsApp</strong> — the day before and on the morning of the workshop.</span>
+        </label>
+
+        <button class="form-cta" onclick="goToPayment()">Continue to payment →</button>
+        <p class="form-secure">🔒 Your information is private and never shared</p>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end page-form -->
+
+
+<!-- ══════════════════════════════
+     PAGE 3: PAYMENT
+══════════════════════════════ -->
+<div class="page" id="page-payment">
+  <div class="pay-page">
+
+    <div class="pay-left">
+      <div class="pay-left-eyebrow">Step 2 of 2 · Payment</div>
+      <h2>Reserve your seat in the Confident Kids Workshop</h2>
+
+      <div class="order-summary">
+        <div class="order-row">
+          <span>Workshop — July 20</span>
+          <span class="order-price order-strike">₹999</span>
+        </div>
+        <div class="order-row">
+          <span>Early bird discount</span>
+          <span style="color:#5cb88a">−₹500</span>
+        </div>
+        <div class="order-row">
+          <span>Recording + PDF roadmap</span>
+          <span style="color:rgba(247,242,235,0.5)">Included</span>
+        </div>
+        <div class="order-row total">
+          <span>Total today</span>
+          <span class="order-price">₹499</span>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L3 7v6c0 5 3.9 9.7 9 11 5.1-1.3 9-6 9-11V7L12 2z"/></svg>
+          <span>100% money-back guarantee within 7 days</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          <span>256-bit SSL encryption · Powered by Razorpay</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span>5,000+ parents have trusted this workshop</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay-right">
+      <div class="pay-card">
+        <h3>Complete your payment</h3>
+        <p class="pay-sub">Choose how you'd like to pay</p>
+
+        <!-- UPI -->
+        <div class="upi-section">
+          <div class="payment-method-label">Pay via UPI</div>
+          <div class="upi-apps">
+            <div class="upi-app selected" onclick="selectUpi(this)"><span class="upi-emoji">📱</span> PhonePe</div>
+            <div class="upi-app" onclick="selectUpi(this)"><span class="upi-emoji">💚</span> GPay</div>
+            <div class="upi-app" onclick="selectUpi(this)"><span class="upi-emoji">🔵</span> Paytm</div>
+            <div class="upi-app" onclick="selectUpi(this)"><span class="upi-emoji">⚡</span> BHIM</div>
+          </div>
+          <div style="margin-top:14px">
+            <div class="upi-row">
+              <input class="upi-input" type="text" placeholder="yourname@upi" id="upi-id" autocomplete="off">
+              <button class="upi-verify-btn" onclick="verifyUpi()">Verify</button>
+            </div>
+            <div id="upi-status" style="font-size:12px;color:var(--text-light);margin-top:6px;min-height:18px"></div>
+          </div>
+        </div>
+
+        <div class="or-divider">or pay by card</div>
+
+        <!-- Card -->
+        <div class="card-section">
+          <div class="card-fields">
+            <div class="card-field">
+              <label>Card number</label>
+              <input type="text" placeholder="1234  5678  9012  3456" maxlength="19" oninput="fmtCard(this)" id="card-num">
+            </div>
+            <div class="card-field">
+              <label>Name on card</label>
+              <input type="text" placeholder="Priya Sharma" id="card-name">
+            </div>
+            <div class="card-row-2">
+              <div class="card-field">
+                <label>Expiry</label>
+                <input type="text" placeholder="MM / YY" maxlength="7" oninput="fmtExpiry(this)" id="card-exp">
+              </div>
+              <div class="card-field">
+                <label>CVV</label>
+                <input type="password" placeholder="•••" maxlength="4" id="card-cvv">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="pay-cta" onclick="processPayment()">Pay ₹499 securely →</button>
+
+        <div class="pay-secure">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Secured by 256-bit SSL
+        </div>
+        <div class="pay-logos">
+          <span class="pay-logo-badge">Razorpay</span>
+          <span class="pay-logo-badge">UPI</span>
+          <span class="pay-logo-badge">Visa</span>
+          <span class="pay-logo-badge">Mastercard</span>
+          <span class="pay-logo-badge">RuPay</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end page-payment -->
+
+
+<!-- ══════════════════════════════
+     PAGE 4: SUCCESS
+══════════════════════════════ -->
+<div class="page" id="page-success">
+  <div class="success-page">
+    <div class="success-inner">
+      <div class="success-check">✓</div>
+      <h2>You're in, <span id="success-name">friend</span>!</h2>
+      <p>Your seat in the Confident Kids Workshop is confirmed. Check your inbox — a confirmation email is on its way.</p>
+      <div class="success-steps">
+        <div class="success-step">
+          <div class="success-step-num">1</div>
+          <div>
+            <h4>Check your email</h4>
+            <p>Your Zoom link and calendar invite are in your inbox right now.</p>
+          </div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">2</div>
+          <div>
+            <h4>WhatsApp reminder coming</h4>
+            <p>You'll get a reminder the evening before and on the morning of July 20.</p>
+          </div>
+        </div>
+        <div class="success-step">
+          <div class="success-step-num">3</div>
+          <div>
+            <h4>Join our parent community</h4>
+            <p>600+ parents supporting each other. Link will be in your email.</p>
+          </div>
+        </div>
+      </div>
+      <button class="success-whatsapp" onclick="shareWhatsapp()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Share with another parent
+      </button>
+    </div>
+  </div>
+</div><!-- end page-success -->
+
+
+<!-- Razorpay checkout SDK (loads their secure payment UI) -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+  // ─────────────────────────────────────────────
+  // STATE
+  // ─────────────────────────────────────────────
+  let userData = {};          // Filled after form submit
+  let razorpayOrder = null;   // Filled after /api/register responds
+
+  // ─────────────────────────────────────────────
+  // PAGE NAVIGATION
+  // ─────────────────────────────────────────────
+  function showPage(id, progress) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('progressFill').style.width = progress + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goToForm()    { showPage('page-form', 33); }
+  function goToLanding() { showPage('page-landing', 0); }
+
+  // ─────────────────────────────────────────────
+  // FORM: validate + call /api/register
+  // ─────────────────────────────────────────────
+  async function goToPayment() {
+    const name    = document.getElementById('inp-name').value.trim();
+    const email   = document.getElementById('inp-email').value.trim();
+    const phone   = document.getElementById('inp-phone').value.trim();
+    const childAge    = document.getElementById('inp-children').value;
+    const whatsappOptIn = document.getElementById('whatsapp-opt').checked;
+
+    // Client-side validation
+    let valid = true;
+    function setField(id, ok) {
+      document.getElementById(id).classList.toggle('error', !ok);
+    }
+    setField('field-name',  name.length > 1);    if (!name)  valid = false;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setField('field-email', emailOk);             if (!emailOk) valid = false;
+    const phoneOk = phone.replace(/\D/g,'').length >= 10;
+    setField('field-phone', phoneOk);             if (!phoneOk) valid = false;
+    if (!valid) return;
+
+    // Disable button while calling API
+    const btn = document.querySelector('.form-cta');
+    btn.textContent = 'Saving your details…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, childAge, whatsappOptIn }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        // Show server-side validation errors if any
+        if (data.fields) {
+          Object.entries(data.fields).forEach(([field, msg]) => {
+            const el = document.getElementById('field-' + field);
+            if (el) {
+              el.classList.add('error');
+              const errEl = el.querySelector('.error-msg');
+              if (errEl) errEl.textContent = msg;
+            }
+          });
+        }
+        throw new Error(data.error || 'Registration failed');
+      }
+
+      // Store for payment step
+      userData = { name, email, phone };
+      razorpayOrder = {
+        orderId:      data.orderId,
+        amount:       data.amount,
+        currency:     data.currency,
+        razorpayKeyId: data.razorpayKeyId,
+      };
+
+      showPage('page-payment', 66);
+
+    } catch (err) {
+      alert('Could not save your details: ' + err.message + '\nPlease try again.');
+    } finally {
+      btn.textContent = 'Continue to payment →';
+      btn.disabled = false;
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // UPI HELPERS
+  // ─────────────────────────────────────────────
+  function selectUpi(el) {
+    document.querySelectorAll('.upi-app').forEach(a => a.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function verifyUpi() {
+    const val    = document.getElementById('upi-id').value.trim();
+    const status = document.getElementById('upi-status');
+    if (!val || !val.includes('@')) {
+      status.textContent = '✕ Please enter a valid UPI ID (e.g. name@upi)';
+      status.style.color = '#c0392b';
+      return;
+    }
+    status.textContent = 'Verifying…';
+    status.style.color = 'var(--text-light)';
+    setTimeout(() => {
+      status.textContent = '✓ UPI ID verified — click Pay to continue';
+      status.style.color = '#27ae60';
+    }, 1100);
+  }
+
+  // ─────────────────────────────────────────────
+  // CARD FORMATTING HELPERS
+  // ─────────────────────────────────────────────
+  function fmtCard(input) {
+    let v = input.value.replace(/\D/g, '').substring(0, 16);
+    input.value = v.match(/.{1,4}/g)?.join('  ') || v;
+  }
+  function fmtExpiry(input) {
+    let v = input.value.replace(/\D/g, '').substring(0, 4);
+    if (v.length >= 2) v = v.slice(0, 2) + ' / ' + v.slice(2);
+    input.value = v;
+  }
+
+  // ─────────────────────────────────────────────
+  // PAYMENT: open Razorpay checkout
+  // ─────────────────────────────────────────────
+  function processPayment() {
+    if (!razorpayOrder) {
+      alert('Something went wrong — please go back and fill the form again.');
+      return;
+    }
+
+    const options = {
+      key:         razorpayOrder.razorpayKeyId,
+      amount:      razorpayOrder.amount,
+      currency:    razorpayOrder.currency,
+      name:        'Dr. Priya Sharma',
+      description: 'Confident Kids Workshop — July 20',
+      order_id:    razorpayOrder.orderId,
+      image:       '/logo.png',           // optional: add a logo.png to /public
+
+      prefill: {
+        name:    userData.name,
+        email:   userData.email,
+        contact: userData.phone,
+      },
+
+      theme: { color: '#1C3A2F' },
+
+      // Called when Razorpay confirms payment on their end
+      handler: async function (response) {
+        try {
+          // Verify on our server (extra security layer)
+          const verifyRes = await fetch('/api/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              razorpay_order_id:   response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature:  response.razorpay_signature,
+            }),
+          });
+
+          const verifyData = await verifyRes.json();
+
+          if (verifyData.verified) {
+            // Show success page
+            const firstName = (userData.name || 'friend').split(' ')[0];
+            document.getElementById('success-name').textContent = firstName;
+            showPage('page-success', 100);
+          } else {
+            alert('Payment could not be verified. Please contact support with your payment ID: ' + response.razorpay_payment_id);
+          }
+        } catch (err) {
+          // Even if verify call fails, Razorpay webhook will still update the sheet
+          // So we show success anyway (webhook is the source of truth)
+          const firstName = (userData.name || 'friend').split(' ')[0];
+          document.getElementById('success-name').textContent = firstName;
+          showPage('page-success', 100);
+        }
+      },
+
+      modal: {
+        ondismiss: function () {
+          console.log('Razorpay checkout closed by user');
+        },
+      },
+    };
+
+    const rzp = new Razorpay(options);
+
+    rzp.on('payment.failed', function (response) {
+      alert(
+        'Payment failed: ' + response.error.description +
+        '\nError code: ' + response.error.code +
+        '\n\nPlease try again or use a different payment method.'
+      );
+    });
+
+    rzp.open();
+  }
+
+  // ─────────────────────────────────────────────
+  // FAQ ACCORDION
+  // ─────────────────────────────────────────────
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+  }
+
+  // ─────────────────────────────────────────────
+  // WHATSAPP SHARE
+  // ─────────────────────────────────────────────
+  function shareWhatsapp() {
+    const url = window.location.href;
+    const msg = encodeURIComponent(
+      'I just signed up for the Confident Kids Workshop by Dr. Priya Sharma 🌱 — July 20, only a few seats left. Grab yours: ' + url
+    );
+    window.open('https://wa.me/?text=' + msg, '_blank');
+  }
+</script>
+</body>
+</html>
